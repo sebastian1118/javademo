@@ -30,8 +30,7 @@ public class Lamda {
 			else
 				return 0;
 		});
-		for(String s : data)
-			System.out.println(s);
+		data.forEach(System.out::println);
 
 		new Thread(() -> {
 			try {
@@ -43,17 +42,11 @@ public class Lamda {
 		}).start();
 
 
-		Predicate<String> p = (s) -> {
-			return true;
-		};
+		Predicate<String> p = (s) -> true;
 
 
-		Function<String, Integer> f1 = (s) -> {
-			return 1;
-		};
-		Function<Integer, Integer> func = (s) -> {
-			return s + 1;
-		};
+		Function<String, Integer> f1 = (s) -> 1;
+		Function<Integer, Integer> func = (s) -> s + 1;
 		func.compose(f1);
 
 		Supplier<Person> sp = Person::new;

@@ -12,4 +12,5 @@ public class Condition {
 
 		return new Condition();
 	}
+
 }

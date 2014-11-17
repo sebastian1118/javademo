@@ -1,4 +1,4 @@
-package lib;
+package lib.commons;
 
 import org.apache.commons.beanutils.BeanUtils;
 

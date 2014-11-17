@@ -1,6 +1,5 @@
 package basic.regex;
 
-import org.apache.commons.lang.time.StopWatch;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -14,18 +13,6 @@ import java.util.regex.Pattern;
 public class Regex {
 
 	public static void main(String... args) {
-
-		StopWatch stopWatch = new StopWatch();
-		stopWatch.start();
-		stopWatch.split();
-
-		System.out.println("123@abc.com".matches(".*@.*\\..*"));
-		System.out.println("008615211111111".matches("(((00)|\\+)86)?[0-9]{11}"));
-
-		System.out.println(System.class.getSimpleName());
-
-		System.out.println(("pS5kb2N4.docx")
-				.matches(".*\\.(docx|doc)$"));
 
 
 		String review
@@ -57,8 +44,6 @@ public class Regex {
 		}
 
 
-
-
 		Pattern pattern
 				= Pattern.compile("[0-9]+--");
 
@@ -67,7 +52,7 @@ public class Regex {
 				".com/review/product_review/000000000107307012-0-190--" +
 				".html");
 		while(mm.find()) {
-			System.out.println(mm.group(0).substring(0,mm.group(0).length()-2));
+			System.out.println(mm.group(0).substring(0, mm.group(0).length() - 2));
 		}
 
 		System.out.print("你好");

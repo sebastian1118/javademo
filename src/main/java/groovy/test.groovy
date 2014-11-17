@@ -1,12 +1,41 @@
 package groovy
 
-public class Test {
+def TOMCAT_HOME = ""
 
-    public static void main(def args) {
 
-        println System.currentTimeMillis();
+if (args.length <= 0) {
+    println "ERROR: Requires at least one WAR file to continue.";
+    return;
+}
 
-        def t = "7c996669-5d41-4a32-b20e-274dde06bd4b";
-        println t.substring(4,23);
+println "Using:"
+println "TOMCAT_HOME=" + TOMCAT_HOME;
+println "Stopping tomcat..."
+
+//println Runtime.getRuntime().exec(TOMCAT_HOME + "/bin/shutdown.sh").getText();
+
+for (def filename : args) {
+    def war = filename.split("/")[-1]
+    println war
+    def warNameWithVersion = war.split("\\.war")[0]
+    println warNameWithVersion
+    def warName = warNameWithVersion.split("##")[0]
+    println warName
+    def warVersion = warNameWithVersion.split("##")[-1]
+    println warVersion
+
+    println "*** Deploying [$war] to Tomcat[$TOMCAT_HOME] ***"
+    println "WAR Name: $warName"
+    println "WAR Version: $warVersion"
+
+    File file = new File(filename)
+    if (file.exists()) {
+        println "Backing up"
+    }
+
+    File webapp = new File("/Users/tian/tmp")
+    for (def f : webapp.findAll()) {
+        println f
     }
 }
+

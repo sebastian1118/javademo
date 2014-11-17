@@ -1,4 +1,4 @@
-package lib;
+package lib.jodatime;
 
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;

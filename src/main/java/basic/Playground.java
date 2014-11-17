@@ -1,9 +1,5 @@
 package basic;
 
-import basic.generic.ChainAction;
-
-import static basic.generic.Condition.equal;
-
 /**
  * Created with IntelliJ IDEA.
  * User: Sebastian MA
@@ -12,10 +8,19 @@ import static basic.generic.Condition.equal;
  */
 public class Playground {
 
-	public static void main() {
+	public static void main(String... args) {
 
-		ChainAction action = new ChainAction();
+		test("name", "name", "name", "name", "name");
+	}
 
-		action.perform(equal());
+
+	public static void test(Object name, Object... values) {
+
+		System.out.println(name);
+		for(Object o : values) {
+			System.out.println(o);
+		}
+
+
 	}
 }
