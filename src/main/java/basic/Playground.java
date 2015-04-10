@@ -1,5 +1,7 @@
 package basic;
 
+import java.lang.management.ManagementFactory;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Sebastian MA
@@ -10,17 +12,18 @@ public class Playground {
 
 	public static void main(String... args) {
 
-		test("name", "name", "name", "name", "name");
-	}
 
-
-	public static void test(Object name, Object... values) {
-
+		String name = ManagementFactory.getRuntimeMXBean().getName();
 		System.out.println(name);
-		for(Object o : values) {
-			System.out.println(o);
-		}
+		// get pid
+		String pid = name.split("@")[0];
+		System.out.println("Pid is:" + pid);
 
+		Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+			System.out.println("going to shutdown");
+		}));
 
 	}
+
+
 }

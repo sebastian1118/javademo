@@ -1,8 +1,8 @@
 package basic.network;
 
 import java.io.IOException;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
+import java.net.*;
+import java.util.Enumeration;
 
 /**
  * Created with IntelliJ IDEA.
@@ -13,14 +13,27 @@ import java.net.UnknownHostException;
 public class Test {
 
 
+	public static void main(String[] args) throws SocketException {
 
-	public static void main(String[] args) {
 		System.out.println("****** START ******");
-		ping();
+		//ping();
 
+
+		Enumeration<NetworkInterface> nets = NetworkInterface.getNetworkInterfaces();
+		while(nets.hasMoreElements()) {
+			Enumeration<InetAddress> addrs = nets.nextElement().getInetAddresses();
+			while(addrs.hasMoreElements()) {
+				InetAddress addr = addrs.nextElement();
+				if(addr instanceof Inet4Address) {
+					if(!addr.isLoopbackAddress() && !addr.isSiteLocalAddress() && addr.isAnyLocalAddress())
+						System.out.println(addr.getHostAddress());
+				}
+			}
+			System.out.println();
+		}
 	}
 
-	public static void ping()  {
+	public static void ping() {
 
 		String host = "www.baidu.com";
 		int timeOut = 5000; //超时应该在3钞以上

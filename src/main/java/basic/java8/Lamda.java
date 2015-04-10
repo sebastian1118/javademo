@@ -21,6 +21,8 @@ public class Lamda {
 
 	public static void main(String... args) {
 
+		System.out.println(System.getProperty("test"));
+
 		List<String> data = Arrays.asList("abc", "ab", "a", "abcd");
 		Collections.sort(data, (a, b) -> {
 			if(a.length() > b.length())
